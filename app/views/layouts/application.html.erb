@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ZCrowler</title>
+  <title>ZCrawler</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  
+
 </head>
 <body>
 
@@ -16,27 +16,120 @@
 <!-- Header -->
 <header>
     <div class="sticky-nav">
-    	
+
         <nav id="menu">
         	<ul id="menu-nav">
             	<li class="current"><a href="#home-slider">Home</a></li>
                 <li><a href="#work">Crawler</a></li>
                 <li><a href="#about">About Us</a></li>
-                
+
             </ul>
         </nav>
-        
+
     </div>
 </header>
 <!-- End Header -->
 <!-- Homepage Slider -->
-<div  >	
-    <img class="banner" src="http://desktopbackgroundshq.com/backgrounds/hd-1080p-wallpaper-1080p-backgrounds-hd-backgrounds-29099.jpg" 
+<div  >
+    <img class="banner" src="http://desktopbackgroundshq.com/backgrounds/hd-1080p-wallpaper-1080p-backgrounds-hd-backgrounds-29099.jpg"
      alt="ZDevop">
 
 </div>
 <!-- End Homepage Slider -->
 <%= yield %>
+<!-- About Section -->
+<div id="about" class="page-alternate">
+  <div class="container">
+    <!-- Title Page -->
+    <div class="row">
+      <div class="span12">
+        <div class="title-page">
+          <h2 class="title">About Us</h2>
+          <h3 class="title-description">Learn About our Team &amp; ZIGExN.</h3>
+        </div>
+      </div>
+    </div>
+    <!-- End Title Page -->
+
+    <!-- People -->
+    <div class="row">
+
+      <!-- Start Profile -->
+      <div class="span4 profile">
+       <div class="image-wrap">
+        <div class="hover-wrap">
+          <span class="overlay-img"></span>
+          <span class="overlay-text-thumb">MEMBER</span>
+        </div>
+        <img src="https://scontent-a-hkg.xx.fbcdn.net/hphotos-xfp1/t31.0-8/10550027_10201508839883388_8738372972682958013_o.jpg" alt="Dedo">
+      </div>
+      <h3 class="profile-name">DEDO</h3>
+      <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>.
+        Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+        <div class="social">
+         <ul class="social-icons">
+           <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+           <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
+           <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
+         </ul>
+       </div>
+     </div>
+     <!-- End Profile -->
+
+     <!-- Start Profile -->
+     <div class="span4 profile">
+       <div class="image-wrap">
+        <div class="hover-wrap">
+          <span class="overlay-img"></span>
+          <span class="overlay-text-thumb">MEMBER</span>
+        </div>
+        <img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/10385359_596447087135312_6448865046029288232_n.jpg?oh=eeb7550140dfe89dde19f417bc715ac0&oe=54417115&__gda__=1412877485_526f2b7e6964caf2a0ca6d3a2d5f88f6" alt="Tuan">
+      </div>
+      <h3 class="profile-name">MINH TUAN</h3>
+      <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>.
+        Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+        <div class="social">
+         <ul class="social-icons">
+           <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+           <li><a href="#"><i class="font-icon-social-email"></i></a></li>
+         </ul>
+       </div>
+     </div>
+     <!-- End Profile -->
+
+     <!-- Start Profile -->
+     <div class="span4 profile">
+       <div class="image-wrap">
+        <div class="hover-wrap">
+          <span class="overlay-img"></span>
+          <span class="overlay-text-thumb">Leader</span>
+        </div>
+        <img src="https://scontent-b-hkg.xx.fbcdn.net/hphotos-prn2/t31.0-8/1077401_10201853376639107_96577917_o.jpg" alt="Bui Khanh">
+      </div>
+      <h3 class="profile-name">BUI KHANH</h3>
+      <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>.
+        Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+        <div class="social">
+         <ul class="social-icons">
+           <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+           <li><a href="#"><i class="font-icon-social-linkedin"></i></a></li>
+           <li><a href="#"><i class="font-icon-social-google-plus"></i></a></li>
+           <li><a href="#"><i class="font-icon-social-vimeo"></i></a></li>
+         </ul>
+       </div>
+     </div>
+     <!-- End Profile -->
+
+   </div>
+   <!-- End People -->
+ </div>
+</div>
+<!-- End About Section -->
+
+
 
 
 <!-- Footer -->
