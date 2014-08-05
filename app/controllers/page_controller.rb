@@ -16,11 +16,30 @@ class PageController < ApplicationController
     require 'nokogiri'
     page = Nokogiri::HTML(open("index.html"))
     @title = page.css('title')
-    puts @title
-    puts "============================================="
     @title_in = page.css('h1')
     @title_in_second = page.css('h2')
     @content = page.css('div').css('table').css('tbody').css('tr').css('td')
     render 'index'
-  end
+    end
+
+    def parse
+      @saveData = ParseData.new(parsedata_params)
+      if @saveData.save then
+          # flash[:success] = "Parse data saved!"
+          puts "success"
+      else
+          # flash[:succes] = "Error!"
+          puts "error"
+      end
+      puts "========================//=============================="
+      render 'parse'
+    end
+
+    private
+
+    def parsedata_params
+      params.permit(:title, :titleinpage, :position, :experience, :department, :degree, :formwork, :gender, :salary,
+        :number, :description, :right, :condition, :cv, :deadline, :formsendcv, :namecontact, :emailcontact, :phonecontact,
+        :addresscontact, :company, :addresscompany, :phonecompany, :descriptioncompany)
+    end
 end

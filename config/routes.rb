@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   root 'page#create'
+  match 'parsedata', :controller => :page,  :to => :parse, :via => :post, :as => :parsedata
 
-  resources :page , only: [:create]
+  resources :page
 
 
 
