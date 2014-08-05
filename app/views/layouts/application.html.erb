@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ZCrowler</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+</head>
+<body>
+
+
+
+
+
+<!-- Header -->
+<header>
+    <div class="sticky-nav">
+    	
+        <nav id="menu">
+        	<ul id="menu-nav">
+            	<li class="current"><a href="#home-slider">Home</a></li>
+                <li><a href="#work">Crawler</a></li>
+                <li><a href="#about">About Us</a></li>
+                
+            </ul>
+        </nav>
+        
+    </div>
+</header>
+<!-- End Header -->
+<!-- Homepage Slider -->
+<div  >	
+    <img class="banner" src="http://desktopbackgroundshq.com/backgrounds/hd-1080p-wallpaper-1080p-backgrounds-hd-backgrounds-29099.jpg" 
+     alt="ZDevop">
+
+</div>
+<!-- End Homepage Slider -->
+<%= yield %>
+
+
+<!-- Footer -->
+<footer>
+	<p class="credits">&copy;2014 Z-CROWLER. <a href="#" title="ZiGeXN Ventura Z-Crowler">Z-CROWLER</a> by <a href="#" title="DEDOREWAN &amp; ZDEVOPS">DEDOREWAN</a></p>
+</footer>
+<!-- End Footer -->
+
+<!-- Back To Top -->
+<a id="back-to-top" href="#home-slider">
+	<i class="font-icon-arrow-simple-up"></i>
+</a>
+</body>
+</html>
