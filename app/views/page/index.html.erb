@@ -31,6 +31,7 @@
 
  <div class="span9">
    <div class="row">
+    <div class="span3">
      <section id="projects">
        <ul id="thumbs">
         <%= form_tag parsedata_path, multipart: true do %>
@@ -39,87 +40,112 @@
           <% @title.each do |a|
             title_path = a.path
             title_name = a.text
-          %>
-            <option value="<%= title_path %>"><%= title_name %></option>
-          <% end %>
-        </select>
-
-        <label for="titleinpage"><b>Title in Page: </b></label>
-        <select id="titleinpage" name="titleinpage">
-          <% @title_in.each do |a|
-            title_path = a.path
-            title_name = a.text
             %>
             <option value="<%= title_path %>"><%= title_name %></option>
             <% end %>
-            <% @title_in_second.each do |a|
+          </select>
+
+          <label for="titleinpage"><b>Title in Page: </b></label>
+          <select id="titleinpage" name="titleinpage">
+            <% @title_in.each do |a|
               title_path = a.path
               title_name = a.text
               %>
               <option value="<%= title_path %>"><%= title_name %></option>
               <% end %>
-            </select>
+              <% @title_in_second.each do |a|
+                title_path = a.path
+                title_name = a.text
+                %>
+                <option value="<%= title_path %>"><%= title_name %></option>
+                <% end %>
+              </select>
 
-            <% arrayContent = []
-            arrayContent.push ({"name" => "position","title" => "Position: "})
-            arrayContent.push ({"name" => "experience","title" => "Years of Experience: "})
-            arrayContent.push ({"name" => "department","title" => "Department: "})
-            arrayContent.push ({"name" => "degree","title" => "Degree: "})
-            arrayContent.push ({"name" => "formwork","title" => "Form of Work: "})
-            arrayContent.push ({"name" => "gender","title" => "Gender: "})
-            arrayContent.push ({"name" => "salary","title" => "Salary: "})
-            arrayContent.push ({"name" => "number","title" => "Number of candidate: "})
-            arrayContent.push ({"name" => "description","title" => "Description: "})
-            arrayContent.push ({"name" => "right","title" => "Right: "})
-            arrayContent.push ({"name" => "condition","title" => "Different condition: "})
-            arrayContent.push ({"name" => "cv","title" => "CV: "})
-            arrayContent.push ({"name" => "deadline","title" => "Deadline: "})
-            arrayContent.push ({"name" => "formsendcv","title" => "Form send CV: "})
-            arrayContent.push ({"name" => "namecontact","title" => "Contact: "})
-            arrayContent.push ({"name" => "emailcontact","title" => "Email Contact: "})
-            arrayContent.push ({"name" => "phonecontact","title" => "Phone contact: "})
-            arrayContent.push ({"name" => "addresscontact","title" => "Address contact: "})
-            arrayContent.push ({"name" => "company","title" => "Company: "})
-            arrayContent.push ({"name" => "addresscompany","title" => "Address Company: "})
-            arrayContent.push ({"name" => "phonecompany","title" => "Phone Company: "})
-            arrayContent.push ({"name" => "descriptioncompany","title" => "Description Company: "})
-            %>
-
-            <% arrayContent.each do |select| %>
-            <label for="<%= select['name'] %>"><b><%= select["title"] %></b></label>
-            <select id="<%= select['name'] %>" name="<%= select['name'] %>">
-              <%
-              if (select["name"] == "deadline") then
-                @content.each do |a|
-                  if (!a.text.blank?) then
-                    path = a.path
-                    text = a.text
-                    %>
-                    <option value="<%= path %>"><%= text.truncate(100) %></option>
-                    <%
-                  end
-                end
-              else
-                @content.each do |a|
-                  if (a.css('b').blank? && !a.text.blank?) then
-                    path = a.path
-                    text = a.text
-                    %>
-                    <option value="<%= path %>"><%= text.truncate(100) %></option>
-                    <%
-                  end
-                end
-              end
+              <% arrayContent = []
+              arrayContent.push ({"name" => "position","title" => "Position: "})
+              arrayContent.push ({"name" => "experience","title" => "Years of Experience: "})
+              arrayContent.push ({"name" => "department","title" => "Department: "})
+              arrayContent.push ({"name" => "degree","title" => "Degree: "})
+              arrayContent.push ({"name" => "formwork","title" => "Form of Work: "})
+              arrayContent.push ({"name" => "gender","title" => "Gender: "})
+              arrayContent.push ({"name" => "salary","title" => "Salary: "})
+              arrayContent.push ({"name" => "number","title" => "Number of candidate: "})
+              arrayContent.push ({"name" => "description","title" => "Description: "})
+              arrayContent.push ({"name" => "right","title" => "Right: "})
+              arrayContent.push ({"name" => "condition","title" => "Different condition: "})
+              arrayContent.push ({"name" => "cv","title" => "CV: "})
+              arrayContent.push ({"name" => "deadline","title" => "Deadline: "})
+              arrayContent.push ({"name" => "formsendcv","title" => "Form send CV: "})
+              arrayContent.push ({"name" => "namecontact","title" => "Contact: "})
+              arrayContent.push ({"name" => "emailcontact","title" => "Email Contact: "})
+              arrayContent.push ({"name" => "phonecontact","title" => "Phone contact: "})
+              arrayContent.push ({"name" => "addresscontact","title" => "Address contact: "})
+              arrayContent.push ({"name" => "company","title" => "Company: "})
+              arrayContent.push ({"name" => "addresscompany","title" => "Address Company: "})
+              arrayContent.push ({"name" => "phonecompany","title" => "Phone Company: "})
+              arrayContent.push ({"name" => "descriptioncompany","title" => "Description Company: "})
               %>
-            </select>
-            <% end %>
-            <br>
-            <%= submit_tag "Save", data: { confirm: "Are you sure?" }, :class => 'button' %>
-            <% end %>
+
+              <% arrayContent.each do |select| %>
+              <label for="<%= select['name'] %>"><b><%= select["title"] %></b></label>
+              <select id="<%= select['name'] %>" name="<%= select['name'] %>">
+                <%
+                if (select["name"] == "deadline") then
+                  @content.each do |a|
+                    if (!a.text.blank?) then
+                      path = a.path
+                      text = a.text
+                      %>
+                      <option value="<%= path %>"><%= text.truncate(100) %></option>
+                      <%
+                    end
+                  end
+                else
+                  @content.each do |a|
+                    if (a.css('b').blank? && !a.text.blank?) then
+                      path = a.path
+                      text = a.text
+                      %>
+                      <option value="<%= path %>"><%= text.truncate(100) %></option>
+                      <%
+                    end
+                  end
+                end
+                %>
+              </select>
+              <% end %>
+              <br>
+              <%= submit_tag "Save", data: { confirm: "Are you sure?" }, :class => 'button' %>
+              <% end %>
+
+            </ul>
+          </section>
+        </div>
+        <!--End section option-->
+        <div class="span6">
+          <ul id="myList">
+
+            <% @title.each do |title| %>
+            <li><%= title.text%></li>
+            <%end%>
+
+            <% @title_in.each do |title_in| %>
+            <li><%= title_in.text %></li>
+            <%end%>
+
+            <% @title_in_second.each do |title_in_second| %>
+            <li><%= title_in_second.text %></li>
+            <%end%>
+
+            <% @content.each do |content| %>
+            <li><%= content.text %></li>
+            <%end%>
 
           </ul>
-        </section>
-
+          <div id="loadMore">Load more</div>
+          <div id="showLess">Show less</div>
+        </div>
+        <!--End Xpath Content-->
       </div>
     </div>
     <!-- End Portfolio Projects -->
