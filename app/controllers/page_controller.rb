@@ -169,12 +169,4 @@ class PageController < ApplicationController
     end
     render 'parse'
   end
-
-  private
-
-  def parsedata_params
-    params.permit(:title, :titleinpage, :position, :experience, :department, :degree, :formwork, :gender, :salary,
-      :number, :description, :right, :condition, :cv, :deadline, :formsendcv, :namecontact, :emailcontact, :phonecontact,
-      :addresscontact, :company, :addresscompany, :phonecompany, :descriptioncompany)
-  end
 end
