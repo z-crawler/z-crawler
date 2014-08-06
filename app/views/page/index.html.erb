@@ -30,6 +30,7 @@
  <div class="span9">
    <div class="row">
     <% arrayContent = []
+    arrayContent.push ({"name" => "null", "title" => ""})
     arrayContent.push ({"name" => "job_name","title" => "Job's name"})
     arrayContent.push ({"name" => "company_name","title" => "Company's name"})
     arrayContent.push ({"name" => "company_address","title" => "Company's address"})
@@ -103,7 +104,7 @@
       <% if (!title.text.empty?) then %>
       <li>
         <%
-        path = title.path
+        path = title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')
         text = title.text.truncate(100)
         %>
         <div class="row">
@@ -129,7 +130,7 @@
         <% if (!title_in.text.empty?) then %>
         <li>
           <%
-          path = title_in.path
+          path = title_in.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')
           text = title_in.text.truncate(100)
           %>
           <div class="row">
@@ -155,7 +156,7 @@
           <% if (!title_in_second.text.empty?) then %>
           <li>
             <%
-            path = title_in_second.path
+            path = title_in_second.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')
             text = title_in_second.text.truncate(100)
             %>
             <div class="row">
@@ -181,7 +182,7 @@
             <% if (!content.text.empty?) then %>
             <li>
               <%
-              path = content.path
+              path = content.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')
               text = content.text.truncate(100)
               %>
               <div class="row">
