@@ -36,7 +36,12 @@
         <%= form_tag parsedata_path, multipart: true do %>
         <label for="title"><b>Title: </b></label>
         <select id="title" name="title">
-          <option value="<%= @title.text %>"><%= @title.text %></option>
+          <% @title.each do |a|
+            title_path = a.path
+            title_name = a.text
+          %>
+            <option value="<%= title_path %>"><%= title_name %></option>
+          <% end %>
         </select>
 
         <label for="titleinpage"><b>Title in Page: </b></label>
