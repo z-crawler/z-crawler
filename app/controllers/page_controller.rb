@@ -17,7 +17,20 @@ class PageController < ApplicationController
     @title_in = page.css('h1')
     @title_in_second = page.css('h2')
     @content = page.css('div').css('table').css('tbody').css('tr').css('td')
-    render 'index'
+    temp = []
+
+    @content.each do |element|
+      if element.children.length > 1
+        temp << element
+      end
+    end
+
+
+    temp.each do |element|
+      if @content.include? element
+        @content.delete(element)
+      end
+    end
   end
 
   def parse
