@@ -1386,6 +1386,8 @@ Version: 1.0
    }
 
    #myList {
+      margin-bottom: 0px;
+      margin-left: 0px;
    	list-style-type: none;
    }
 
@@ -1401,7 +1403,7 @@ Version: 1.0
    	color:black;
    }
    #showLess {
-   	color:red;
+   	color:#DE5E60;
    	cursor:pointer;
    }
    #showLess:hover {

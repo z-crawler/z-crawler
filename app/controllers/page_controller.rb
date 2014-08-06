@@ -17,14 +17,28 @@ class PageController < ApplicationController
     @title_in = page.css('h1')
     @title_in_second = page.css('h2')
     @content = page.css('div').css('table').css('tbody').css('tr').css('td')
-    render 'index'
-  end
+    temp = []
 
-  def parse
-    params.each do |key, value|
-      puts "#{value}: #{key}"
+    @content.each do |element|
+      if element.children.length > 1
+        temp << element
+      end
     end
-    puts "==============================//==================================="
+
+    temp.each do |element|
+      if @content.include? element
+        @content.delete(element)
+      end
+    end
+
+  render 'index'
+end
+
+def parse
+  params.each do |key, value|
+    puts "#{value}: #{key}"
+  end
+  puts "==============================//==================================="
     # @saveData = ParseData.new(parsedata_params)
     # if @saveData.save then
       # flash[:success] = "Parse data saved!"
