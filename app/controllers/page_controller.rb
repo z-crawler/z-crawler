@@ -21,23 +21,26 @@ class PageController < ApplicationController
   end
 
   def parse
-    @saveData = ParseData.new(parsedata_params)
-    if @saveData.save then
-          # flash[:success] = "Parse data saved!"
-          puts "success"
-        else
-          # flash[:succes] = "Error!"
-          puts "error"
-        end
-        puts "========================//=============================="
-        render 'parse'
-      end
-
-      private
-
-      def parsedata_params
-        params.permit(:title, :titleinpage, :position, :experience, :department, :degree, :formwork, :gender, :salary,
-          :number, :description, :right, :condition, :cv, :deadline, :formsendcv, :namecontact, :emailcontact, :phonecontact,
-          :addresscontact, :company, :addresscompany, :phonecompany, :descriptioncompany)
-      end
+    params.each do |key, value|
+      puts "#{value}: #{key}"
     end
+    puts "==============================//==================================="
+    # @saveData = ParseData.new(parsedata_params)
+    # if @saveData.save then
+      # flash[:success] = "Parse data saved!"
+      # puts "success"
+    # else
+      # flash[:succes] = "Error!"
+      # puts "error"
+    # end
+    render 'parse'
+  end
+
+  private
+
+  def parsedata_params
+    params.permit(:title, :titleinpage, :position, :experience, :department, :degree, :formwork, :gender, :salary,
+      :number, :description, :right, :condition, :cv, :deadline, :formsendcv, :namecontact, :emailcontact, :phonecontact,
+      :addresscontact, :company, :addresscompany, :phonecompany, :descriptioncompany)
+  end
+end
