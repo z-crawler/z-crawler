@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   match 'parsedata', :controller => :page,  :to => :parse, :via => :post, :as => :parsedata
 
   resources :page
-
+  resources :data, :only
 
 
   # The priority is based upon order of creation: first created -> highest priority.
