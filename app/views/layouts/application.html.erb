@@ -1,43 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ZCrawler</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-
-</head>
-<body>
-
-
-
-
-
-  <!-- Header -->
-  <header>
-    <div class="sticky-nav">
-
-      <nav id="menu">
-       <ul id="menu-nav">
-        <li class="current"><%=link_to "Home", root_path %></li>
-        <li><a href="#work">Crawler</a></li>
-
-
-      </ul>
-    </nav>
-
-  </div>
-</header>
-<!-- End Header -->
-
-<%= yield %>
-
-<!-- Footer -->
-<footer>
- <p class="credits">&copy;2014 Z-CRAWLER. <a href="#" title="ZiGeXN Ventura Z-Crowler">Z-CRAWLER</a> by <a href="#" title="DEDOREWAN &amp; ZDEVOPS">ZiGeXN Ventura</a></p>
-</footer>
-<!-- End Footer -->
-
-
-</body>
+  <head>
+    <title>ZCrawler</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="sticky-nav">
+        <nav id="menu">
+          <ul id="menu-nav">
+            <li class="current"><%=link_to "Home", root_path %></li>
+            <li><a href="#work">Crawler</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- End Header -->
+    <%= yield %>
+    <!-- Footer -->
+    <footer>
+      <p class="credits">&copy;2014 Z-CRAWLER. <a href="#" title="ZiGeXN Ventura Z-Crowler">Z-CRAWLER</a> by <a href="#" title="DEDOREWAN &amp; ZDEVOPS">ZiGeXN Ventura
+      </a></p>
+    </footer>
+    <!-- End Footer -->
+  </body>
 </html>

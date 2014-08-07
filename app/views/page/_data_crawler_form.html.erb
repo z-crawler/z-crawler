@@ -1,0 +1,80 @@
+<%= form_tag parsedata_path, multipart: true do %>
+  <ul id="crawler-data-list" class="multiple_columns">
+    <% @title.each do |title| %>
+      <% if title['text'].present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= title['path'] %>"><b><%= title['text'].truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select id="<%= title['path'] %>" name="<%= title['path'] %>">
+                <% @array_content.each do |array_content| %>
+                  <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+    <% @title_in.each do |title_in| %>
+      <% if title_in['text'].present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= title_in['path'] %>"><b><%= title_in['text'].truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select id="<%= title_in['path'] %>" name="<%= title_in['path'] %>">
+                <% @array_content.each do |array_content| %>
+                  <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+    <% @title_in_second.each do |title_in_second| %>
+      <% if title_in_second['text'].present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= title_in_second['path'] %>"><b><%= title_in_second['text'].truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select id="<%= title_in_second['path'] %>" name="<%= title_in_second['path'] %>">
+                <% @array_content.each do |array_content| %>
+                  <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+    <% @content.each do |content| %>
+      <% if content['text'].present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= content['path'] %>"><b><%= content['text'].truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select id="<%= content['path'] %>" name="<%= content['path'] %>">
+                <% @array_content.each do |array_content| %>
+                <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= submit_tag "Save", data: { confirm: "Are you sure?" }, :class => 'button' %>
+<% end %>

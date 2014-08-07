@@ -566,30 +566,33 @@ Version: 1.0
    }
 
 /* ==================================================
-   List
+   List of Crawler Data
    ================================================== */
 
-   #myList {
+   #crawler-data-list{
       margin-bottom: 0px;
       margin-left: 0px;
       list-style-type: none;
    }
 
-   #myList li{
+   #crawler-data-list li{
       display:none;
-
    }
+
    #loadMore {
       color:green;
       cursor:pointer;
    }
+
    #loadMore:hover {
       color:black;
    }
+
    #showLess {
       color:#DE5E60;
       cursor:pointer;
    }
+
    #showLess:hover {
       color:black;
    }

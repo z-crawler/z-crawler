@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
 class PageController < ApplicationController
   def index
 
@@ -12,23 +9,42 @@ class PageController < ApplicationController
   end
 
   def create
-    page = Nokogiri::HTML(open("index.html"))
-    @title = page.css('title')
-    @title_in = page.css('h1')
-    @title_in_second = page.css('h2')
-    @content = page.css('div').css('table').css('tbody').css('tr').css('td')
+    page = Nokogiri::HTML(open("db/test/index.html"))
+    @title_controller = page.css('title')
+    @title_in_controller = page.css('h1')
+    @title_in_second_controller = page.css('h2')
+    @content_controller = page.css('div').css('table').css('tbody').css('tr').css('td')
+
     temp = []
 
-    @content.each do |element|
-      if element.children.length > 1
-        temp << element
-      end
+    @content_controller.each do |element|
+      temp << element if element.children.length > 1
     end
 
     temp.each do |element|
-      if @content.include? element
-        @content.delete(element)
-      end
+      @content_controller.delete(element) if @content_controller.include? element
+    end
+
+    @title = []
+    @title_in = []
+    @title_in_second = []
+    @content = []
+
+    @title_controller.each do |title|
+      @title.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
+    end
+
+    @title_in_controller.each do |title|
+       @title_in.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
+
+    end
+
+    @title_in_second_controller.each do |title|
+     @title_in_second.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
+    end
+
+    @content_controller.each do |content|
+      @content.push ({"text" => content.text, "path" => content.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
     end
 
     render 'index'
@@ -36,150 +52,150 @@ class PageController < ApplicationController
 
   def parse
     # initial data of crawler
-    @saveData = DataCrawler.new()
+    @save_data = DataCrawler.new
     #chang field with pair key, value from index.html
     params.each do |key, value|
       key =  key.gsub('&#47', '/').gsub('&#93', ']').gsub('&#91','[')
       case value
       when "job_name"
-        @saveData.job_name = key
+        @save_data.job_name = key
       when "company_name"
-        @saveData.company_name = key
+        @save_data.company_name = key
       when "company_address"
-        @saveData.company_address = key
+        @save_data.company_address = key
       when "staff_type"
-        @saveData.staff_type = key
+        @save_data.staff_type = key
       when "job_industry"
-        @saveData.job_industry = key
+        @save_data.job_industry = key
       when "job_type"
-        @saveData.job_type = key
+        @save_data.job_type = key
       when "salary"
-        @saveData.salary = key
+        @save_data.salary = key
       when "work_place"
-        @saveData.work_place = key
+        @save_data.work_place = key
       when "job_content"
-        @saveData.job_content = key
+        @save_data.job_content = key
       when "priority"
-        @saveData.priority = key
+        @save_data.priority = key
       when "site_id"
-        @saveData.site_id = key
+        @save_data.site_id = key
       when "station"
-        @saveData.station = key
+        @save_data.station = key
       when "station_id"
-        @saveData.station_id = key
+        @save_data.station_id = key
       when "job_category_id"
-        @saveData.job_category_id = key
+        @save_data.job_category_id = key
       when "job_category"
-        @saveData.job_category = key
+        @save_data.job_category = key
       when "job_category_sub"
-        @saveData.job_category_sub = key
+        @save_data.job_category_sub = key
       when "job_category_full"
-        @saveData.job_category_full = key
+        @save_data.job_category_full = key
       when "job_item_id"
-        @saveData.job_item_id = key
+        @save_data.job_item_id = key
       when "job_no"
-        @saveData.job_no = key
+        @save_data.job_no = key
       when "job_info_type"
-        @saveData.job_info_type = key
+        @save_data.job_info_type = key
       when "company_phoneno"
-        @saveData.company_phoneno = key
+        @save_data.company_phoneno = key
       when "company_faxno"
-        @saveData.company_faxno = key
+        @save_data.company_faxno = key
       when "company_description"
-        @saveData.company_description = key
+        @save_data.company_description = key
       when "work_type"
-        @saveData.work_type = key
+        @save_data.work_type = key
       when "work_period"
-        @saveData.work_period = key
+        @save_data.work_period = key
       when "limit_age"
-        @saveData.limit_age = key
+        @save_data.limit_age = key
       when "limit_age_reason"
-        @saveData.limit_age_reason = key
+        @save_data.limit_age_reason = key
       when "work_hour"
-        @saveData.work_hour = key
+        @save_data.work_hour = key
       when "lunch_time"
-        @saveData.lunch_time = key
+        @save_data.lunch_time = key
       when "overtime"
-        @saveData.overtime = key
+        @save_data.overtime = key
       when "work_day_per_week"
-        @saveData.work_day_per_week = key
+        @save_data.work_day_per_week = key
       when "bonus"
-        @saveData.bonus = key
+        @save_data.bonus = key
       when "day_off"
-        @saveData.day_off = key
+        @save_data.day_off = key
       when "two_days_off_per_week"
-        @saveData.two_days_off_per_week = key
+        @save_data.two_days_off_per_week = key
       when "days_off_per_year"
-        @saveData.days_off_per_year = key
+        @save_data.days_off_per_year = key
       when "child_care_day_off"
-        @saveData.child_care_day_off = key
+        @save_data.child_care_day_off = key
       when "child_care_place"
-        @saveData.child_care_place = key
+        @save_data.child_care_place = key
       when "work_place_change"
-        @saveData.work_place_change = key
+        @save_data.work_place_change = key
       when "company_staff_no"
-        @saveData.company_staff_no = key
+        @save_data.company_staff_no = key
       when "insurances"
-        @saveData.insurances = key
+        @save_data.insurances = key
       when "retirement"
-        @saveData.retirement = key
+        @save_data.retirement = key
       when "re_apply_job"
-        @saveData.re_apply_job = key
+        @save_data.re_apply_job = key
       when "apply_living_place"
-        @saveData.apply_living_place = key
+        @save_data.apply_living_place = key
       when "commute_by_car"
-        @saveData.commute_by_car = key
+        @save_data.commute_by_car = key
       when "comute_support"
-        @saveData.comute_support = key
+        @save_data.comute_support = key
       when "job_recruit_number"
-        @saveData.job_recruit_number = key
+        @save_data.job_recruit_number = key
       when "education_background"
-        @saveData.education_background = key
+        @save_data.education_background = key
       when "required_experience"
-        @saveData.required_experience = key
+        @save_data.required_experience = key
       when "required_certificate"
-        @saveData.required_certificate = key
+        @save_data.required_certificate = key
       when "extra_info"
-        @saveData.extra_info = key
+        @save_data.extra_info = key
       when "comments"
-        @saveData.comments = key
+        @save_data.comments = key
       when "registered_date"
-        @saveData.registered_date = key
+        @save_data.registered_date = key
       when "expiry_date"
-        @saveData.expiry_date = key
+        @save_data.expiry_date = key
       when "contact_place"
-        @saveData.contact_place = key
+        @save_data.contact_place = key
       when "other_info"
-        @saveData.other_info = key
+        @save_data.other_info = key
       when "tencongty"
-        @saveData.tencongty = key
+        @save_data.tencongty = key
       when "sdt"
-        @saveData.sdt = key
+        @save_data.sdt = key
       when "email"
-        @saveData.email = key
+        @save_data.email = key
       when "website"
-        @saveData.website = key
+        @save_data.website = key
       when "address"
-        @saveData.address = key
+        @save_data.address = key
       when "status"
-        @saveData.status = key
+        @save_data.status = key
       when "map_workplace"
-        @saveData.map_workplace = key
+        @save_data.map_workplace = key
       when "map_province"
-        @saveData.map_province = key
+        @save_data.map_province = key
       when "map_city"
-        @saveData.map_city = key
+        @save_data.map_city = key
       when "map_district"
-        @saveData.map_district = key
+        @save_data.map_district = key
       end
     end
 
-    if @saveData.save then
-      # flash[:success] = "Parse data saved!"
-      puts "success"
+    if @save_data.save then
+      flash[:success] = "Parse data saved!"
+      # puts "success"
     else
-      # flash[:succes] = "Error!"
-      puts "error"
+      flash[:error] = "Error!"
+      # puts "error"
     end
     render 'parse'
   end
