@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'page#create'
   match 'parsedata', :controller => :page,  :to => :parse, :via => :post, :as => :parsedata
-
+  match 'savedata', :controller => :data,  :to => :create, :via => :post, :as => :savedata
   resources :page
   resources :data, :only
 

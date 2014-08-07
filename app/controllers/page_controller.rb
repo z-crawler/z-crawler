@@ -12,7 +12,7 @@ class PageController < ApplicationController
   end
 
   def create
-    page = Nokogiri::HTML(open("index.html"))
+    page = Nokogiri::HTML(open("http://hcm.vieclam.24h.com.vn/nhan-vien-kinh-doanh/dai-dien-kinh-doanh-c96p1id1557265.html"))
     @title = page.css('title')
     @title_in = page.css('h1')
     @title_in_second = page.css('h2')
@@ -31,6 +31,7 @@ class PageController < ApplicationController
         @content.delete(element)
       end
     end
+    render 'index'
   end
 
   def parse
@@ -180,6 +181,7 @@ class PageController < ApplicationController
       # flash[:succes] = "Error!"
       puts "error"
     end
+    @return = "Yes"
     render 'parse'
   end
 end
