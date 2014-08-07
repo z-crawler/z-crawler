@@ -25,12 +25,13 @@ class PageController < ApplicationController
       end
     end
 
-
     temp.each do |element|
       if @content.include? element
         @content.delete(element)
       end
     end
+
+    render 'index'
   end
 
   def parse
