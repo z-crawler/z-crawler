@@ -8,9 +8,7 @@
       <div class="title-page">
         <h2 class="title">Data</h2>
         <%= form_tag savedata_path, multipart: true do %>
-        <%= label_tag 'url', 'URL'%>
-        <%= text_field_tag 'url', "http://hcm.vieclam.24h.com.vn/marketing-pr/marketing-online-c53p1id1350241.html" %>
-        <%= submit_tag "Parse", data: { confirm: "Are you sure?" }, :class => 'button' %>
+        <%= submit_tag "auto parse", data: { confirm: "Are you sure?" }, :class => 'button' %>
         <% end %>
       </div>
     </div>
