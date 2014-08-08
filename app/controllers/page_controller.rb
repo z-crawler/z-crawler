@@ -2,6 +2,7 @@ class PageController < ApplicationController
   def index
 
   end
+
   def work
   end
 
@@ -9,47 +10,21 @@ class PageController < ApplicationController
   end
 
   def create
-    page = Nokogiri::HTML(open("db/test/parse_config/index.html"))
-    @title_controller = page.css('title')
-    @title_in_controller = page.css('h1')
-    @title_in_second_controller = page.css('h2')
-    @content_controller = page.css('div').css('table').css('tbody').css('tr').css('td')
+    page = Nokogiri::HTML(open("db/test/parse_config/#{params[:file_config][:file_name].original_filename}"))
 
-    temp = []
+    @title = page.css('title')
+    @title_in = page.css('h1')
+    @title_in_second = page.css('h3')
 
-    @content_controller.each do |element|
-      temp << element if element.children.length > 1
-    end
-
-    temp.each do |element|
-      @content_controller.delete(element) if @content_controller.include? element
-    end
-
-    @title = []
-    @title_in = []
-    @title_in_second = []
-    @content = []
-
-    @title_controller.each do |title|
-      # @title.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-      @title.push ({"text" => title.text, "path" => URI.encode(title.path)})#.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-    end
-
-    @title_in_controller.each do |title|
-      # @title_in.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-      @title_in.push ({"text" => title.text, "path" => URI.encode(title.path)})#.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-
-    end
-
-    @title_in_second_controller.each do |title|
-      # @title_in_second.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-      @title_in_second.push ({"text" => title.text, "path" => URI.encode(title.path)})#.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-    end
-
-    @content_controller.each do |content|
-      # @content.push ({"text" => content.text, "path" => content.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-      @content.push ({"text" => content.text, "path" => URI.encode(content.path)})#.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
-    end
+    @content = page.css('h2').to_a
+    @content.concat(page.css('td').select{ |element| element.children.length <= 2})
+    @content.concat(page.css('td').css('a').select{ |element| element.children.length <= 2})
+    @content.concat(page.css('ul').css('li').css('p').select{ |element| element.children.length <= 2})
+    @content.concat(page.css('strong'))
+    @content.concat(page.css('b'))
+    @content.concat(page.css('em'))
+    @content.concat(page.css('div').select{|element| element.children.length <= 1 })
+    @content.concat(page.css('div').select{|element| element.css('br').length >= 1 })
 
     render 'index'
   end
@@ -59,13 +34,15 @@ class PageController < ApplicationController
     @data_crawler = DataCrawler.new(get_param_data)
     if @data_crawler.save then
       flash[:success] = "Parse data saved!"
-      # puts "success"
     else
       flash[:error] = "Error!"
-      # puts "error"
     end
-    @return = "Yes"
-    render 'parse'
+    @return = "Config success, choose next parse structure to config!!!"
+    render 'show'
+  end
+
+  def show
+    render 'show'
   end
 
 end

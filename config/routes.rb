@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'page#create'
+  root 'page#show'
+
+  match '/', :controller => :page, :to => :show, :via => :post, :as => :returnroot
+  match 'page_config', :controller => :page, :to => :create, :via => :post, :as => :pageconfig
   match 'parsedata', :controller => :page,  :to => :parse, :via => :post, :as => :parsedata
   match 'savedata', :controller => :data,  :to => :create, :via => :post, :as => :savedata
   resources :page
