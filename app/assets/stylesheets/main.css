@@ -596,3 +596,12 @@ Version: 1.0
    #showLess:hover {
       color:black;
    }
+
+   .field input {
+    color: #999;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius:2px;
+    margin: 10px 10px 10px 0px;
+   }

@@ -7,7 +7,6 @@ class DataController < ApplicationController
     list_dir.each do |dir_site|
       Dir.glob("#{dir_site}/*.html") do |html_file|
         # do work on files ending in .rb in the desired directory
-        # page = Nokogiri::HTML(open(params[:url]))
         site_id = dir_site.gsub(/[^0-9]/, '')
         page = Nokogiri::HTML(open(html_file))
         parse = DataCrawler.find_by(site_id: site_id)

@@ -10,7 +10,7 @@ class PageController < ApplicationController
   end
 
   def create
-    page = Nokogiri::HTML(open("db/test/parse_config/index.html"))
+    page = Nokogiri::HTML(open("db/test/parse_config/#{params[:file_config][:file_name].original_filename}"))
 
     @title_controller = page.css('title')
     @title_in_controller = page.css('h1')
@@ -199,10 +199,8 @@ class PageController < ApplicationController
     end
     if @save_data.save then
       flash[:success] = "Parse data saved!"
-      # puts "success"
     else
       flash[:error] = "Error!"
-      # puts "error"
     end
     @return = "Config success, choose next parse structure to config!!!"
     render 'show'
