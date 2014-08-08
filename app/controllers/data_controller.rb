@@ -10,8 +10,6 @@ class DataController < ApplicationController
         site_id = dir_site.gsub(/[^0-9]/, '')
         page = Nokogiri::HTML(open(html_file))
         parse = DataCrawler.find_by(site_id: site_id)
-        puts parse.company_address
-        puts parse.job_name
         @save_data = DataSave.new(
           url: "",
           job_name: page.xpath(parse.job_name).text,
