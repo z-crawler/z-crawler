@@ -1,0 +1,88 @@
+<%= form_tag parsedata_path, multipart: true do %>
+  <label for="site_id"><b>Enter your site's ID : </b></label>
+  <%= text_field_tag 'site_id', nil, placeholder: "Enter your site's ID here" %>
+
+  <ul id="crawler-data-list" class="multiple_columns">
+
+    <% @title.each do |title| %>
+      <% if title.text.present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= title.path %>" title="<%= title.text%>"><b><%= title.text.truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= title.path %>"><%= column %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+    <% @title_in.each do |title_in| %>
+      <% if title_in.text.present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= title_in.path %>" title="<%= title_in.text%>"><b><%= title_in.text.truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= title_in.path %>"><%= column %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+    <% @title_in_second.each do |title_in_second| %>
+      <% if title_in_second.text.present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= title_in_second.path %>" title="<%= title_in_second.text%>"><b><%= title_in_second.text.truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= title_in_second.path %>"><%= column %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+    <% @content.each do |content| %>
+      <% if content.text.present? %>
+        <li>
+          <div class="row">
+            <div class="span3">
+              <label for="<%= content.path %>" title="<%= content.text%>"><b><%= content.text.truncate(100) %></b></label>
+            </div>
+            <div class="span5">
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= content.path %>"><%= column %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= submit_tag "Save", data: { confirm: "Are you sure?" }, :class => 'button' %>
+<% end %>

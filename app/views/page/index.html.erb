@@ -1,0 +1,41 @@
+<!-- Our Work Section -->
+<div id="work" class="page">
+  <div class="container">
+    <!-- Title Page -->
+    <div class="row">
+      <div class="span12">
+        <div class="title-page">
+          <h2 class="title">Crawler Tool</h2>
+        </div>
+      </div>
+    </div>
+    <!-- End Title Page -->
+    <!-- Portfolio Projects -->
+    <div class="row">
+      <div class="span3">
+        <!-- Filter -->
+        <nav id="options" class="work-nav">
+          <ul id="filters" class="option-set" data-option-key="filter">
+            <li class="type-work">Type of HTML</li>
+            <li><a href="#filter" data-option-value="*" class="selected">Fixed HTML</a></li>
+            <li><a href="#filter" data-option-value=".design">Non-Struture</a></li>
+          </ul>
+        </nav>
+        <!-- End Filter -->
+      </div>
+      <div class="span9">
+        <div class="row">
+          <%= render 'data_crawler_form' %>
+          <div id="loadMore">Load more</div>
+          <div id="showLess">Show less</div>
+        </div>
+      </div>
+    </div>
+    <!-- End Portfolio Projects -->
+  </div>
+</div>
+<!-- End Our Work Section -->
+
+
+
+
