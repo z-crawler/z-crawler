@@ -14,18 +14,17 @@ class PageController < ApplicationController
 
     @title_controller = page.css('title')
     @title_in_controller = page.css('h1')
-    @title_in_second_controller = page.css('h2')
-    @content_controller = page.css('div').css('table').css('tbody').css('tr').css('td')
+    @title_in_second_controller  =   page.css('h3')
 
-    temp = []
-
-    @content_controller.each do |element|
-      temp << element if element.children.length > 1
-    end
-
-    temp.each do |element|
-      @content_controller.delete(element) if @content_controller.include? element
-    end
+    @content_controller = page.css('h2').to_a
+    @content_controller.concat(page.css('td').select{ |element| element.children.length <= 2})
+    @content_controller.concat(page.css('td').css('a').select{ |element| element.children.length <= 2})
+    @content_controller.concat(page.css('ul').css('li').css('p').select{ |element| element.children.length <= 2})
+    @content_controller.concat(page.css('strong'))
+    @content_controller.concat(page.css('b'))
+    @content_controller.concat(page.css('em'))
+    @content_controller.concat(page.css('div').select{|element| element.children.length <= 1 })
+    @content_controller.concat(page.css('div').select{|element| element.css('br').length >= 1 })
 
     @title = []
     @title_in = []
