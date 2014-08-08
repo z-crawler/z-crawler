@@ -1,7 +1,8 @@
 <%= form_tag parsedata_path, multipart: true do %>
-  <%= text_field_tag 'site_id', "Enter your site's ID here" %>
+  <%= text_field_tag 'data[site_id]', "Enter your site's ID here" %>
 
   <ul id="crawler-data-list" class="multiple_columns">
+
     <% @title.each do |title| %>
       <% if title['text'].present? %>
         <li>
@@ -10,9 +11,10 @@
               <label for="<%= title['path'] %>"><b><%= title['text'].truncate(100) %></b></label>
             </div>
             <div class="span5">
-              <select id="<%= title['path'] %>" name="<%= title['path'] %>">
-                <% @array_content.each do |array_content| %>
-                  <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= title['path'] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>
@@ -29,9 +31,10 @@
               <label for="<%= title_in['path'] %>"><b><%= title_in['text'].truncate(100) %></b></label>
             </div>
             <div class="span5">
-              <select id="<%= title_in['path'] %>" name="<%= title_in['path'] %>">
-                <% @array_content.each do |array_content| %>
-                  <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= title_in['path'] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>
@@ -48,9 +51,10 @@
               <label for="<%= title_in_second['path'] %>"><b><%= title_in_second['text'].truncate(100) %></b></label>
             </div>
             <div class="span5">
-              <select id="<%= title_in_second['path'] %>" name="<%= title_in_second['path'] %>">
-                <% @array_content.each do |array_content| %>
-                  <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= title_in_second['path'] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>
@@ -67,9 +71,10 @@
               <label for="<%= content['path'] %>"><b><%= content['text'].truncate(100) %></b></label>
             </div>
             <div class="span5">
-              <select id="<%= content['path'] %>" name="<%= content['path'] %>">
-                <% @array_content.each do |array_content| %>
-                <option value="<%= array_content["name"] %>"><%= array_content["title"] %></option>
+              <select>
+                <option value=""></option>
+                <% map_data_columns.each do |column| %>
+                  <option value="<%= content["name"] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>

@@ -73,5 +73,11 @@ jQuery(function($){
       BRUSHED.mobileNav();
    });
 
+   $("ul#crawler-data-list select").change(function(){
+      var column_name = $(this).find("option:selected").text();
+      $(this).attr("name", "data[" + column_name + "]");
+      return false;
+   })
+
 });
 
