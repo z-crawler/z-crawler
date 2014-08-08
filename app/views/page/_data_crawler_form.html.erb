@@ -1,5 +1,7 @@
 <%= form_tag parsedata_path, multipart: true do %>
-  <%= text_field_tag 'site_id', "Enter your site's ID here" %>
+
+  <label for="site_id"><b>Enter your site's ID : </b></label>
+  <%= text_field_tag 'site_id', nil, placeholder: "Enter your site's ID here" %>
 
   <ul id="crawler-data-list" class="multiple_columns">
     <% @title.each do |title| %>

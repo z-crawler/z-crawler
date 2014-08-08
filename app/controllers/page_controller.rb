@@ -2,6 +2,7 @@ class PageController < ApplicationController
   def index
 
   end
+
   def work
   end
 
@@ -10,6 +11,7 @@ class PageController < ApplicationController
 
   def create
     page = Nokogiri::HTML(open("db/test/parse_config/index.html"))
+
     @title_controller = page.css('title')
     @title_in_controller = page.css('h1')
     @title_in_second_controller = page.css('h2')
@@ -32,19 +34,23 @@ class PageController < ApplicationController
 
     @title_controller.each do |title|
       @title.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
+      # @title.push ({"text" => title.text, "path" => title.path})
     end
 
     @title_in_controller.each do |title|
        @title_in.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
+       # @title_in.push ({"text" => title.text, "path" => title.path})
 
     end
 
     @title_in_second_controller.each do |title|
      @title_in_second.push ({"text" => title.text, "path" => title.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
+     # @title_in_second.push ({"text" => title.text, "path" => title.path})
     end
 
     @content_controller.each do |content|
       @content.push ({"text" => content.text, "path" => content.path.gsub('[','&#91').gsub(']', '&#93').gsub('/', '&#47')})
+      # @content.push ({"text" => content.text, "path" => content.path})
     end
 
     render 'index'
@@ -198,7 +204,12 @@ class PageController < ApplicationController
       flash[:error] = "Error!"
       # puts "error"
     end
-    @return = "Yes"
-    render 'parse'
+    @return = "Config success, choose next parse structure to config!!!"
+    render 'show'
   end
+
+  def show
+    render 'show'
+  end
+
 end
