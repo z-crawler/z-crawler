@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  root 'page#index'
 
-   resources :page , only: [:create]
-   
+  root 'page#show'
 
-   
+  match '/', :controller => :page, :to => :show, :via => :post, :as => :returnroot
+  match 'page_config', :controller => :page, :to => :create, :via => :post, :as => :pageconfig
+  match 'parsedata', :controller => :page,  :to => :parse, :via => :post, :as => :parsedata
+  match 'savedata', :controller => :data,  :to => :create, :via => :post, :as => :savedata
+  resources :page
+  resources :data, :only
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

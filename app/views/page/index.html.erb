@@ -1,158 +1,40 @@
-
-
 <!-- Our Work Section -->
 <div id="work" class="page">
-	<div class="container">
-    	<!-- Title Page -->
-        <div class="row">
-            <div class="span12">
-                <div class="title-page">
-                    <h2 class="title">Crawler Tool</h2>
-              
-                </div>
-            </div>
-        </div>
-        <!-- End Title Page -->
-        
-        <!-- Portfolio Projects -->
-        <div class="row">
-        	<div class="span3">
-            	<!-- Filter -->
-                <nav id="options" class="work-nav">
-                    <ul id="filters" class="option-set" data-option-key="filter">
-                    	<li class="type-work">Type of HTML</li>
-                        <li><a href="#filter" data-option-value="*" class="selected">Fixed HTML</a></li>
-                        <li><a href="#filter" data-option-value=".design">Non-Struture</a></li>
-                      
-                    </ul>
-                </nav>
-                <!-- End Filter -->
-            </div>
-            
-            <div class="span9">
-            	<div class="row">
-                	<section id="projects">
-                    	<ul id="thumbs">
-                            <%= form_for(:page,url: page_index_path) do |f| %>
-
-                            <%= f.label :url %>
-                            <%= f.text_field :url%>
-                             <%= f.submit "CRAWL", class: "button button-small" %>
-						    <%end%>
-                           
-                           
-                           	<%if @root.nil? %>
-                               NO RESULT 
-                               <% else %>
-                               <select >
-                               <option>---</option>
-                               
-                               </select>
-                           	<%end%>
-                           
-                        </ul>
-                    </section>
-                    
-            	</div>
-            </div>
-        </div>
-        <!-- End Portfolio Projects -->
-    </div>
-</div>
-<!-- End Our Work Section -->
-
-<!-- About Section -->
-<div id="about" class="page-alternate">
-<div class="container">
+  <div class="container">
     <!-- Title Page -->
     <div class="row">
-        <div class="span12">
-            <div class="title-page">
-                <h2 class="title">About Us</h2>
-                <h3 class="title-description">Learn About our Team &amp; ZIGExN.</h3>
-            </div>
+      <div class="span12">
+        <div class="title-page">
+          <h2 class="title">Crawler Tool</h2>
         </div>
+      </div>
     </div>
     <!-- End Title Page -->
-    
-    <!-- People -->
+    <!-- Portfolio Projects -->
     <div class="row">
-    	
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">MEMBER</span>
-                </div>
-                <img src="https://scontent-a-hkg.xx.fbcdn.net/hphotos-xfp1/t31.0-8/10550027_10201508839883388_8738372972682958013_o.jpg" alt="Dedo">
-            </div>
-            <h3 class="profile-name">DEDO</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
-                </ul>
-            </div>
+      <div class="span3">
+        <!-- Filter -->
+        <nav id="options" class="work-nav">
+          <ul id="filters" class="option-set" data-option-key="filter">
+            <li class="type-work">Type of HTML</li>
+            <li><a href="#filter" data-option-value="*" class="selected">Fixed HTML</a></li>
+            <li><a href="#filter" data-option-value=".design">Non-Struture</a></li>
+          </ul>
+        </nav>
+        <!-- End Filter -->
+      </div>
+      <div class="span9">
+        <div class="row">
+          <%= render 'data_crawler_form' %>
+          <div id="loadMore">Load more</div>
+          <div id="showLess">Show less</div>
         </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">MEMBER</span>
-                </div>
-                <img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/10385359_596447087135312_6448865046029288232_n.jpg?oh=eeb7550140dfe89dde19f417bc715ac0&oe=54417115&__gda__=1412877485_526f2b7e6964caf2a0ca6d3a2d5f88f6" alt="Tuan">
-            </div>
-            <h3 class="profile-name">MINH TUAN</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-email"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Leader</span>
-                </div>
-                <img src="https://scontent-b-hkg.xx.fbcdn.net/hphotos-prn2/t31.0-8/1077401_10201853376639107_96577917_o.jpg" alt="Bui Khanh">
-            </div>
-            <h3 class="profile-name">BUI KHANH</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-linkedin"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-google-plus"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-vimeo"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
+      </div>
     </div>
-    <!-- End People -->
+    <!-- End Portfolio Projects -->
+  </div>
 </div>
-</div>
-<!-- End About Section -->
-
+<!-- End Our Work Section -->
 
 
 

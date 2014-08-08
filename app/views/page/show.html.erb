@@ -1,0 +1,25 @@
+<%= @result %>
+<!-- Our Work Section -->
+<div id="work" class="page">
+  <div class="container">
+    <!-- Title Page -->
+    <div class="row">
+      <div class="span12">
+        <div class="title-page">
+          <h2 class="title">Chose file: </h2>
+        </div>
+      </div>
+    </div>
+    <!-- End Title Page -->
+    <div class>
+      <%= form_tag pageconfig_path, multipart: true do %>
+        <div class="field">
+          <%= file_field 'file_config', 'file_name' %>
+        </div>
+        <%= submit_tag "Config", data: { confirm: "Are you sure?" }, :class => 'button'%>
+      <% end %>
+      <%= button_to "Auto pare data", savedata_path, :class => "button" %>
+    </div>
+  </div>
+</div>
+<!-- End Our Work Section -->
