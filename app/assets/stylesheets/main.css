@@ -542,7 +542,13 @@ Version: 1.0
       filter: alpha(opacity=100);
    }
 
+/* ==================================================
+   Error notify
+   ================================================== */
 
+   .alert {
+      text-align: center;
+   }
 
 /* ==================================================
    Footer
@@ -577,6 +583,8 @@ Version: 1.0
 
    #crawler-data-list li{
       display:none;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #26292E;
    }
 
    #loadMore {

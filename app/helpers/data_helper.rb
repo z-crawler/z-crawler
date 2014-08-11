@@ -1,4 +1,13 @@
 module DataHelper
+
+  def path_data_config
+    "db/test/parse_config/"
+  end
+
+  def path_data_auto
+    "db/test/parse_auto/"
+  end
+
   def map_data_columns
     data_crawler_columns = DataCrawler.columns.map{|c| c.name}
     data_crawler_columns.delete("id").delete("created_at").delete("updated_at")

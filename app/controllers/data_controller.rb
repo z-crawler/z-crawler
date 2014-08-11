@@ -1,12 +1,15 @@
 class DataController < ApplicationController
   def create
-    list_dir = Dir.glob('db/test/parse_auto/*').select {|f| File.directory? f}
+    @result = []
+    @notify = "No data add"
+    list_dir = Dir.glob("#{path_data_auto()}*").select {|f| File.directory? f}
     list_dir.each do |dir_site|
       Dir.glob("#{dir_site}/*.html") do |html_file|
         # do work on files ending in .rb in the desired directory
         site_id = dir_site.gsub(/[^0-9]/, '')
         page = Nokogiri::HTML(open(html_file))
         parse = DataCrawler.find_by(site_id: site_id)
+        next if parse.nil?
         @save_data = DataSave.new(
           url: "",
           job_name: page.xpath(parse.job_name).text,
@@ -75,10 +78,13 @@ class DataController < ApplicationController
           map_city: page.xpath(parse.map_city).text,
           map_district: page.xpath(parse.map_district).text,
         )
+        @save_data.site_id = site_id
         @save_data.save
+        File.rename(html_file, html_file.gsub(".html", ".done"))
+        @result.push({"id" => @save_data.id, "job_name" => @save_data.job_name, "company_name" => @save_data.company_name})
+        @notify = "Auto parse success"
       end
     end
-    @result = "Auto parse success"
-    render 'page/parse'
+    render 'show'
   end
 end

@@ -1,0 +1,33 @@
+<div class="page">
+  <div class="container">
+   <!-- Title Page -->
+   <div class="row">
+    <div class="span12">
+      <div class="title-page">
+        <h2 class="title">Added data: </h2>
+        <%= @notify %>
+        <% unless @notify == "No data add"%>
+          <table style="width:100%">
+          <tr>
+            <th>ID</th>
+            <th>Job's name</th>
+            <th>Company's name</th>
+          </tr>
+          <% @result.each do |data| %>
+            <tr>
+              <td><%= data["id"] %></td>
+              <td><%= data["job_name"] %></td>
+              <td><%= data["company_name"] %></td>
+            </tr>
+          <% end %>
+          </table>
+        <% end %>
+        <%= button_to "Config", returnroot_path, :method => "post", :class => "button" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+      </div>
+    </div>
+  </div>
+</div>
