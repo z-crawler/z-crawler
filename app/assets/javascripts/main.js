@@ -75,7 +75,9 @@ jQuery(function($){
 
    $("ul#crawler-data-list select").change(function(){
       var column_name = $(this).find("option:selected").text();
+      var column_value = $(this).val().replace(/\//g,'').replace(/\[/g,'').replace(/\]/g,'');
       $(this).attr("name", "data[" + column_name + "]");
+      $("input#" + column_value).attr("name", "structure[" + column_name + "]");
       return false;
    })
 

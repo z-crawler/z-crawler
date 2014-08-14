@@ -5,17 +5,18 @@
   <ul id="crawler-data-list" class="multiple_columns">
 
     <% @title.each do |title| %>
-      <% if title.text.present? %>
+      <% if title["text"].present? %>
         <li>
           <div class="row">
             <div class="span3">
-              <label for="<%= title.path %>" title="<%= title.text%>"><b><%= title.text.truncate(100) %></b></label>
+              <label for="<%= title["path"] %>" title="<%= title["text"]%>"><b><%= title["text"].truncate(100) %></b></label>
             </div>
             <div class="span5">
+              <input type="hidden" id="<%= title["path"].gsub('/','').gsub('[','').gsub(']','') %>" value="<%= title["path_structure"] %>" />
               <select>
                 <option value=""></option>
                 <% map_data_columns.each do |column| %>
-                  <option value="<%= title.path %>"><%= column %></option>
+                  <option value="<%= title["path"] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>
@@ -25,17 +26,18 @@
     <% end %>
 
     <% @title_in.each do |title_in| %>
-      <% if title_in.text.present? %>
+      <% if title_in["text"].present? %>
         <li>
           <div class="row">
             <div class="span3">
-              <label for="<%= title_in.path %>" title="<%= title_in.text%>"><b><%= title_in.text.truncate(100) %></b></label>
+              <label for="<%= title_in["path"] %>" title="<%= title_in["text"]%>"><b><%= title_in["text"].truncate(100) %></b></label>
             </div>
             <div class="span5">
+              <input type="hidden" id="<%= title_in["path"].gsub('/','').gsub('[','').gsub(']','') %>" value="<%= title_in["path_structure"] %>" />
               <select>
                 <option value=""></option>
                 <% map_data_columns.each do |column| %>
-                  <option value="<%= title_in.path %>"><%= column %></option>
+                  <option value="<%= title_in["path"] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>
@@ -45,17 +47,18 @@
     <% end %>
 
     <% @title_in_second.each do |title_in_second| %>
-      <% if title_in_second.text.present? %>
+      <% if title_in_second["text"].present? %>
         <li>
           <div class="row">
             <div class="span3">
-              <label for="<%= title_in_second.path %>" title="<%= title_in_second.text%>"><b><%= title_in_second.text.truncate(100) %></b></label>
+              <label for="<%= title_in_second["path"] %>" title="<%= title_in_second["text"]%>"><b><%= title_in_second["text"].truncate(100) %></b></label>
             </div>
             <div class="span5">
+              <input type="hidden" id="<%= title_in_second["path"].gsub('/','').gsub('[','').gsub(']','') %>" value="<%= title_in_second["path_structure"] %>" />
               <select>
                 <option value=""></option>
                 <% map_data_columns.each do |column| %>
-                  <option value="<%= title_in_second.path %>"><%= column %></option>
+                  <option value="<%= title_in_second["path"] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>
@@ -65,17 +68,18 @@
     <% end %>
 
     <% @content.each do |content| %>
-      <% if content.text.present? %>
+      <% if content["text"].present? %>
         <li>
           <div class="row">
             <div class="span3">
-              <label for="<%= content.path %>" title="<%= content.text%>"><b><%= content.text.truncate(100) %></b></label>
+              <label for="<%= content["path"] %>" title="<%= content["text"]%>"><b><%= content["text"].truncate(100) %></b></label>
             </div>
             <div class="span5">
+              <input type="hidden" id="<%= content["path"].gsub('/','').gsub('[','').gsub(']','') %>" value="<%= content["path_structure"] %>" />
               <select>
                 <option value=""></option>
                 <% map_data_columns.each do |column| %>
-                  <option value="<%= content.path %>"><%= column %></option>
+                  <option value="<%= content["path"] %>"><%= column %></option>
                 <% end %>
               </select>
             </div>
