@@ -25,7 +25,7 @@ module DataHelper
       end
       path_structure = "/html(1)#{path_structure}"
 
-      @output.push({"path" => input_in.path, "text" => input_in.text, "path_structure" => path_structure})
+      @output.push({"path" => input_in.path, "text" => input_in.text.gsub('\n','').gsub('\t','').strip, "path_structure" => path_structure})
     end
     @output
   end

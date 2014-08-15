@@ -35,6 +35,8 @@ class PageController < ApplicationController
       @title_in_second = create_data_crawler(title_in_second_controller)
       @content = create_data_crawler(content_controller)
 
+      @result = @title.concat(@title_in).concat(@title_in_second).concat(@content)
+      @result = @result.uniq {|filter| filter["text"]}
       render 'index'
     end
   end

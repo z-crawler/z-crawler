@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814091816) do
+ActiveRecord::Schema.define(version: 20140815040812) do
 
   create_table "data_crawler_structures", force: true do |t|
     t.string   "job_name"
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20140814091816) do
     t.string   "job_type"
     t.string   "salary"
     t.string   "work_place"
-    t.string   "job_content"
+    t.text     "job_content"
     t.string   "priority"
     t.string   "site_id"
     t.string   "station"
@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 20140814091816) do
     t.string   "job_info_type"
     t.string   "company_phoneno"
     t.string   "company_faxno"
-    t.string   "company_description"
+    t.text     "company_description"
     t.string   "work_type"
     t.string   "work_period"
     t.string   "limit_age"
@@ -204,8 +204,8 @@ ActiveRecord::Schema.define(version: 20140814091816) do
     t.string   "comute_support"
     t.string   "job_recruit_number"
     t.string   "education_background"
-    t.string   "required_experience"
-    t.string   "required_certificate"
+    t.text     "required_experience"
+    t.text     "required_certificate"
     t.string   "extra_info"
     t.string   "comments"
     t.string   "registered_date"
