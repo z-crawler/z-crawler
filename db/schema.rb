@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815040812) do
+ActiveRecord::Schema.define(version: 20140822031213) do
 
   create_table "data_crawler_structures", force: true do |t|
     t.string   "job_name"
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20140815040812) do
   create_table "data_saves", force: true do |t|
     t.string   "url"
     t.string   "job_name"
-    t.string   "company_name"
+    t.text     "company_name"
     t.string   "company_address"
     t.string   "staff_type"
     t.string   "job_industry"
